@@ -18,7 +18,7 @@ export default function DashSidebar() {
   }, [location.search]);
 
   return (
-    <Sidebar aria-label="Dashboard Sidebar w-full md:w-56" >
+    <Sidebar aria-label="Dashboard Sidebar w-full md:w-56" className='w-full md:w-56'>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Link to="/dashboard?tab=profile">
