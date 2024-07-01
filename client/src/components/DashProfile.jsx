@@ -24,6 +24,7 @@ import {
   deleteUserStart,
   deleteUserSuccess,
   deleteUserFailure,
+  signoutSuccess,
 } from "../redux/user/userSlice";
 import "react-circular-progressbar/dist/styles.css";
 
@@ -54,6 +55,23 @@ export default function DashProfile() {
       setImgFileUrl(URL.createObjectURL(file));
     }
   };
+
+  const handleSignOut=async()=>{
+    try{
+      const res=await fetch('/api/user/signout',{
+        method:'POST',
+      });
+      const data= await res.json();
+      if(!res.ok){
+        console.log(data.message);
+      }else{
+        dispatch(signoutSuccess());
+      }
+      
+    }catch(error){
+      console.log(error.message);
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -224,7 +242,7 @@ export default function DashProfile() {
         <span className="cursor-pointer" onClick={() => setShowModel(true)}>
           Delete Account
         </span>
-        <span className="cursor-pointer">Sign Out</span>
+        <span className="cursor-pointer" onClick={handleSignOut}>Sign Out</span>
       </div>
       {updateUserSuccess && (
         <Alert color={"success"} className="mt-5">

@@ -24,21 +24,23 @@ export default function Header() {
     }
   }, [location.search]);
 
-  const handleSignout = async () => {
-    try {
-      const res = await fetch('/api/user/signout', {
-        method: 'POST',
+  const handleSignOut=async()=>{
+    try{
+      const res=await fetch('/api/user/signout',{
+        method:'POST',
       });
-      const data = await res.json();
-      if (!res.ok) {
+      const data= await res.json();
+      if(!res.ok){
         console.log(data.message);
-      } else {
+      }else{
         dispatch(signoutSuccess());
       }
-    } catch (error) {
+      
+    }catch(error){
       console.log(error.message);
     }
-  };
+  }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -99,7 +101,7 @@ export default function Header() {
               <Dropdown.Item>Profile</Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
+            <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
           </Dropdown>
         ) : (
           <Link to='/signin'>
