@@ -1,6 +1,7 @@
 import {
   Alert,
   Button,
+  ButtonGroup,
   Modal,
   ModalBody,
   ModalHeader,
@@ -8,7 +9,7 @@ import {
 } from "flowbite-react";
 import React, { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import {
   getStorage,
@@ -29,7 +30,7 @@ import {
 import "react-circular-progressbar/dist/styles.css";
 
 export default function DashProfile() {
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser,error,loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Add useNavigate hook
 
@@ -234,9 +235,25 @@ export default function DashProfile() {
           placeholder="Password"
           onChange={handleChange}
         ></TextInput>
-        <Button type="submit" className="" gradientDuoTone="purpleToBlue">
-          Update
+        <Button
+          type='submit'
+          gradientDuoTone='purpleToBlue'
+          outline
+          disabled={loading || imageFileUploading}
+        >
+          {loading ? 'Loading...' : 'Update'}
         </Button>
+        {currentUser.isAdmin && (
+          <Link to={'/create-post'}>
+            <Button
+              type='button'
+              gradientDuoTone='purpleToPink'
+              className='w-full'
+            >
+              Create a post
+            </Button>
+          </Link>
+        )}
       </form>
       <div className="text-red-500 flex justify-between mt-5">
         <span className="cursor-pointer" onClick={() => setShowModel(true)}>
