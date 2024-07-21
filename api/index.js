@@ -5,6 +5,8 @@ import userRoutes from './routes/user.routes.js';
 import authRoutes from './routes/auth.route.js';
 import postRoutes from './routes/post.route.js';
 import cookieParser from 'cookie-parser';
+import commentRoutes from './routes/comment.route.js';
+
 dotenv.config();
 // 
 mongoose.connect(process.env.MONGO)
@@ -23,6 +25,7 @@ const PORT = 3000;
 app.use('/api/user', userRoutes);
 app.use('/api/auth',authRoutes);
 app.use('/api/post',postRoutes);
+app.use('/api/comment', commentRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

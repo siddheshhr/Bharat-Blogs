@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Button, ButtonGroup, Spinner } from 'flowbite-react';
 import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
+import CallToAction from '../components/CallToAction';
+import CommentSection from '../components/CommentSection';
 const PostPage=()=> {
     const { postSlug } = useParams();
     const [loading, setLoading] = useState(true);
@@ -53,8 +55,12 @@ const PostPage=()=> {
         </span>
       </div>
       <div dangerouslySetInnerHTML={{__html:post && post.content}} className="p-3 max-w-2xl mx-auto w-full">
-
+      
       </div>
+      <div className="max-w-4xl mx-auto w-full">
+          <CallToAction/>
+        </div>
+        <CommentSection postId={post._id}/>
     </main>;
 }
 
