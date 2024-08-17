@@ -1,0 +1,24 @@
+@keyframes waveFlag {
+    0% {
+      transform: translateX(0) rotate(0deg);
+    }
+    50% {
+      transform: translateX(20px) rotate(2deg);
+    }
+    100% {
+      transform: translateX(0) rotate(0deg);
+    }
+  }
+  
+  .flag-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-image: url('/path/to/india_flag_bg.png');
+    background-size: cover;
+    background-position: center;
+    animation: waveFlag 5s infinite ease-in-out;
+    z-index: -1;
+  }
