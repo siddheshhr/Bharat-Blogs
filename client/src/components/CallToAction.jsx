@@ -26,7 +26,7 @@ const CallToAction = () => {
         whileHover={{ scale: 0.9, rotate: 0.1 }}
       >
         <motion.img 
-          src='https://th.bing.com/th/id/OIG1.38DQBLfZochZk_.m7EXw?w=1024&h=1024&rs=1&pid=ImgDetMain' 
+          src='https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
           alt='Explore'
           style={{ boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)' }}
           whileHover={{ scale: 1.05, boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.4)' }}
